@@ -1,0 +1,14 @@
+<% data.forEach(function(repo) { %>
+    <h1>
+        <a href="<%= repo.owner.html_url %> ">
+            <%= repo.name %>
+        </a>
+    </h1>
+
+    <h3>
+        <%= repo.full_name %>
+    </h3>
+    <p>language:
+        <%= repo.language %>
+    </p>
+    <% }) %>
