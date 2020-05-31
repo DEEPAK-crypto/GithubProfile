@@ -9,3 +9,9 @@
         <%= user.following %> | Repositories:
             <%= user.public_repos %>
 </p>
+<% repo.forEach(function(rep){ %>
+    <h2>
+        <%= rep.name %>
+    </h2>
+
+    <% }) %>

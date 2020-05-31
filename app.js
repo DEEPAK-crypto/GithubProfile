@@ -1,37 +1,35 @@
-var express = require('express');
+var express = require("express");
 app = express();
-request = require('request');
-
+axios = require("axios");
 app.set("view engine", 'ejs');
 app.use(express.static("public"));
 
-var data3;
+app.get('/user/:id', function(req, res) {
 
-var url2 = {
-    url: 'https://api.github.com/users/DEEPAK-crypto/repos',
-    headers: {
-        'User-Agent': 'DEEPAK-crypto'
-    }
-}
-request(url2, function(error, request, body) {
-    data3 = JSON.parse(body);
-
-});
-
-app.get('/', function(req, res) {
-    const url = {
-        url: 'https://api.github.com/users/DEEPAK-crypto',
+    var user = axios({
+        method: 'get',
+        url: 'https://api.github.com/users/' + req.params.id,
         headers: {
-            'User-Agent': 'DEEPAK-crypto'
+            'User-Agent': req.params.id
         }
-    }
-    request(url, function(error, request, body) {
-        var data = JSON.parse(body);
 
-        res.render('index', { user: data });
+    });
+
+    var repo = axios({
+        method: 'get',
+        url: 'https://api.github.com/users/' + req.params.id + '/repos',
+        headers: {
+            'User-Agent': req.params.id
+        }
+
+    });
+
+    axios.all([user, repo]).then(function(response) {
+        var userData = response[0].data;
+        var repoData = response[1].data;
+        res.render('index', { user: userData, repo: repoData });
 
     });
 });
-
 
 app.listen(3000);
