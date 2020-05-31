@@ -1,17 +1,49 @@
-<h1>
-    <%=user.name  %>
-</h1>
-<a href="<%=user.url %>">
-    <%= user.login %>
-</a>
-<p>follower:
-    <%= user.followers %> | folowoing:
-        <%= user.following %> | Repositories:
-            <%= user.public_repos %>
-</p>
-<% repo.forEach(function(rep){ %>
-    <h2>
-        <%= rep.name %>
-    </h2>
+<%- include ('partials/header')  %>
+    <div id="head" class="container-fluid">
+        <div id="innerHead" class="container">
+            <div class="media">
+                <img id='avatar' src="<%= user.avatar_url %> " alt=""></div>
+            <h1>
+                <%=user.name  %>
+            </h1>
+            <a href="<%=user.url %>">
+                <%= user.login %>
+            </a>
+            <div id='fol' class="container">
+                <div class='row'>
+                    <div class="col-sm-4">
+                        <p>follower:
+                            <%= user.followers %>
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>folowoing:
+                            <%= user.following %>
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>Repositories:
+                            <%= user.public_repos %>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-    <% }) %>
+        </div>
+    </div>
+    <% repo.forEach(function(rep){ %>
+        <h2>
+            <a href="<%=rep.html_url %>">
+                <%= rep.name %>
+            </a>
+        </h2>
+        <p>Language:
+            <%= rep.language %>
+        </p>
+        <p>
+            <%= rep.size %> kb </p>
+        <p>Created at -
+            <%= rep.created_at.substring(0,10) %>
+        </p>
+        <% }) %>
+            <%- include ('partials/footer')  %>

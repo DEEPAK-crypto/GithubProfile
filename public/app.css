@@ -1,0 +1,27 @@
+div#head {
+    text-align: center;
+    background-color: rgb(41, 41, 41);
+    top: 0;
+    display: block;
+}
+
+div#innerHead {
+    padding-top: 90px;
+    max-width: 720px;
+    padding-bottom: 200px;
+    color: rgb(209, 209, 209);
+}
+
+img#avatar {
+    border-radius: 200px;
+    width: 50%;
+    max-width: 300px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+div#fol {
+    margin-top: 60px;
+    text-transform: capitalize;
+    font-size: 1.5em;
+}
