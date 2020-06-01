@@ -18,6 +18,7 @@ img#avatar {
     max-width: 300px;
     margin: 0 auto;
     margin-bottom: 20px;
+    border: 7px solid rgb(235, 235, 235);
 }
 
 div#fol {
@@ -40,9 +41,14 @@ div#inrepo {
 }
 
 div#in {
-    margin: 15px;
+    margin: 5px;
 }
 
 div#mrow {
     background-color: rgb(235, 235, 235);
+}
+
+div#ww {
+    max-width: 1400px;
+    margin: 0 auto;
 }
